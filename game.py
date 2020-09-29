@@ -1,4 +1,5 @@
 from score import Score, next_score
+from tennisplayer import TennisPlayer
 
 
 class Game:
@@ -22,6 +23,3 @@ class Game:
         return f"{self.server.score}:{self.receiver.score}"
 
 
-class TennisPlayer:
-    def __init__(self, score: Score):
-        self.score = score
