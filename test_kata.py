@@ -1,4 +1,5 @@
-from kata import Score, Game
+from game import Game
+from score import Score
 
 
 def test_score_format():
@@ -9,7 +10,6 @@ def test_score_format():
 def test_server_score():
     game = Game(Score.ZERO, Score.ZERO)
     game.increment_server_score()
-
     assert game.format_score() == '15:0'
 
 
