@@ -7,6 +7,7 @@ class Score(Enum):
     THIRTY = 2
     FORTY = 3
     ADVANTAGE = 4
+    WIN = 5
 
     def __str__(self):
         return ["0", "15", "30", "40", "A"][self.value]

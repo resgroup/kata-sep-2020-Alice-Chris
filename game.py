@@ -14,12 +14,19 @@ class Game:
         self._increment_player_score(self.receiver, self.server)
 
     def _increment_player_score(self, player, opponent):
-        if opponent.score != Score.ADVANTAGE:
-            player.score = next_score(player.score)
+        if player.score == Score.FORTY:
+            if opponent.score == Score.ADVANTAGE:
+                opponent.score = Score.FORTY
+            elif opponent.score == Score.FORTY:
+                player.score = Score.ADVANTAGE
+            else:
+                player.score = Score.WIN
         else:
-            opponent.score = Score.FORTY
+            player.score = next_score(player.score)
 
     def format_score(self):
+        if self.server.score == Score.WIN:
+            return "Server wins!"
         return f"{self.server.score}:{self.receiver.score}"
 
 
