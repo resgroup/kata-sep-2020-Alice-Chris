@@ -32,3 +32,10 @@ def test_score_thirty():
     game.increment_server_score()
 
     assert game.format_score() == '40:30'
+
+
+def test_winning_score_no_deuce():
+    game = Game(Score.FORTY, Score.THIRTY)
+    game.increment_server_score()
+
+    assert ...

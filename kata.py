@@ -2,20 +2,18 @@ from enum import Enum
 
 
 class Score(Enum):
-    ZERO = "0"
-    FIFTEEN = "15"
-    THIRTY = "30"
-    FORTY = "40"
-    ADVANTAGE = "A"
+    ZERO = 0
+    FIFTEEN = 1
+    THIRTY = 2
+    FORTY = 3
+    ADVANTAGE = 4
+
+    def __str__(self):
+        return ["0", "15", "30", "40", "A"][self.value]
 
 
 def next_score(current_score):
-    if current_score == Score.ZERO:
-        return Score.FIFTEEN
-    if current_score == Score.FIFTEEN:
-        return Score.THIRTY
-    if current_score == Score.THIRTY:
-        return Score.FORTY
+    return Score(current_score.value + 1)
 
 
 class Game:
@@ -30,5 +28,4 @@ class Game:
         self.receiver_score = next_score(self.receiver_score)
 
     def format_score(self):
-        return f"{self.server_score.value}:{self.receiver_score.value}"
-
+        return f"{self.server_score}:{self.receiver_score}"
