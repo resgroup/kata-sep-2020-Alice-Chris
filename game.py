@@ -13,17 +13,6 @@ class Game:
     def increment_receiver_score(self):
         self._increment_player_score(self.receiver, self.server)
 
-    def _increment_player_score(self, player, opponent):
-        if player.score == Score.FORTY:
-            if opponent.score == Score.ADVANTAGE:
-                opponent.score = Score.FORTY
-            elif opponent.score == Score.FORTY:
-                player.score = Score.ADVANTAGE
-            else:
-                player.score = Score.WIN
-        else:
-            player.score = next_score(player.score)
-
     def is_over(self):
         return self.winner() is not None
 
@@ -38,3 +27,13 @@ class Game:
         return f"{self.server.score}:{self.receiver.score}"
 
 
+def _increment_player_score(player, opponent):
+    if player.score == Score.FORTY:
+        if opponent.score == Score.ADVANTAGE:
+            opponent.score = Score.FORTY
+        elif opponent.score == Score.FORTY:
+            player.score = Score.ADVANTAGE
+        else:
+            player.score = Score.WIN
+    else:
+        player.score = next_score(player.score)
