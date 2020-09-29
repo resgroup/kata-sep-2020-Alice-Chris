@@ -24,9 +24,17 @@ class Game:
         else:
             player.score = next_score(player.score)
 
-    def format_score(self):
+    def is_over(self):
+        return self.winner() is not None
+
+    def winner(self):
         if self.server.score == Score.WIN:
-            return "Server wins!"
+            return "Server"
+        if self.receiver.score == Score.WIN:
+            return "Receiver"
+        return None
+
+    def format_score(self):
         return f"{self.server.score}:{self.receiver.score}"
 
 
