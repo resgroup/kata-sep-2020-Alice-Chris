@@ -8,10 +8,10 @@ class Game:
         self.receiver = TennisPlayer(receiver_score)
 
     def increment_server_score(self):
-        self._increment_player_score(self.server, self.receiver)
+        _increment_player_score(self.server, self.receiver)
 
     def increment_receiver_score(self):
-        self._increment_player_score(self.receiver, self.server)
+        _increment_player_score(self.receiver, self.server)
 
     def is_over(self):
         return self.winner() is not None
