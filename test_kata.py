@@ -46,3 +46,10 @@ def test_score_server_loses_advantage():
     game.increment_receiver_score()
 
     assert game.format_score() == '40:40'
+
+def test_score_server_wins():
+    game = Game(Score.FORTY, Score.THIRTY)
+    game.increment_server_score()
+
+    assert game.over == True
+    assert game.format_score() == 'Server wins!'
